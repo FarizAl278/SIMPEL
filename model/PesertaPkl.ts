@@ -1,8 +1,10 @@
 import mongoose, {Schema, models, model} from "mongoose";
 
-export interface IPesertaPkl {
+export interface IPesertaPkl extends Document {
     nama: string;
     nis: string;
+    jenisKelamin: string;
+    tglLahir: Date;
     jurusan: string;
     sekolah: string;
     tglPreTest?: Date;
@@ -23,6 +25,14 @@ const PesertaPklSchema = new Schema<IPesertaPkl>(
       type: String,
       required: true,
       unique: true, // NIS biasanya unik
+    },
+    jenisKelamin: {
+      type: String,
+      required: true
+    },
+    tglLahir: {
+      type: Date,
+      required: true
     },
     jurusan: {
       type: String,
